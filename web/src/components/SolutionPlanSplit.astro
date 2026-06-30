@@ -1,0 +1,35 @@
+---
+export interface PlanItem {
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  image: string;
+  imageAlt: string;
+  items: PlanItem[];
+}
+
+const { image, imageAlt, items } = Astro.props;
+
+function formatNum(index: number) {
+  return String(index + 1).padStart(2, '0');
+}
+---
+
+<section class="solution-plan-split" aria-label="Giải pháp từ Tân Phạm Gia">
+  <figure class="solution-plan-split-visual m-0">
+    <img src={image} alt={imageAlt} class="solution-plan-split-img" loading="lazy" />
+  </figure>
+  <div class="solution-plan-split-list" role="list">
+    {
+      items.map((item, index) => (
+        <article class="solution-plan-split-item" role="listitem">
+          <span class="solution-plan-item-num">{formatNum(index)}</span>
+          <h3 class="solution-plan-item-title">{item.title}</h3>
+          <p class="solution-plan-item-desc">{item.desc}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,179 @@
+/** Nội dung trang Giới thiệu — Sitemap 2.1 → 2.9 */
+
+export const gioiThieuSeo = {
+  title: 'Công Ty May Đồng Phục Doanh Nghiệp Hơn 23 Năm Kinh Nghiệm | Tân Phạm Gia',
+  description:
+    'Tìm hiểu năng lực sản xuất, quy trình QC đa tầng, đội ngũ chuyên môn và kinh nghiệm hơn 23 năm trong lĩnh vực đồng phục doanh nghiệp.',
+};
+
+export const brandStory = {
+  title: '23 Năm Theo Đuổi Giá Trị Của Một Sản Phẩm May Mặc Chất Lượng',
+  paragraphs: [
+    'Năm 2003, Tân Phạm Gia bắt đầu hành trình của mình trong lĩnh vực may mặc với khát vọng tạo ra những sản phẩm chất lượng và mang giá trị bền vững cho người sử dụng.',
+    'Trong suốt hơn hai thập kỷ phát triển, Tân Phạm Gia không ngừng mở rộng năng lực sản xuất, đầu tư công nghệ, hoàn thiện quy trình quản lý chất lượng và tích lũy kinh nghiệm từ các thương hiệu thời trang riêng. Chính nền tảng đó đã tạo nên lợi thế khác biệt trong lĩnh vực đồng phục doanh nghiệp ngày nay.',
+    'Chúng tôi tin rằng đồng phục không chỉ là trang phục làm việc. Đồng phục là một phần của văn hóa doanh nghiệp, là hình ảnh thương hiệu và là trải nghiệm của người lao động mỗi ngày.',
+  ],
+  image:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuD7szr7Elx-oAqCEnir2uiBqNE-4WpmIm10Kj1YsgXyu1XMFvP0qvIXYrsMpRh9sztusxsq8_7_MFPstpomb4RaDeTg9J3ldf2CSKwYUq91qGdHVM6Dm9YkfE3Rdfay_snBPthtK7WWCq_NFHZ3j3Kua1MgJAT-qQPXwlpAIQIDLIpk4Njn_msEnsXh9DyyRtwkvdNU5u10NXpGyYseM_HBo6gwnr6IFqeZ9gHXI1CrvRQnXAxx3UyIT7UIbTDEMKjd1gdxbZwWKrKl',
+};
+
+export const timelineSection = {
+  eyebrow: 'Các mốc lịch sử hình thành',
+  title: 'Những dấu ấn trong hành trình phát triển của Tân Phạm Gia',
+};
+
+export const timeline = [
+  {
+    year: '2003',
+    title: 'Khởi Nguồn Hành Trình',
+    desc: 'Thành lập Công ty TNHH Tân Phạm Gia, đặt nền móng cho hành trình phát triển trong lĩnh vực may mặc và đồng phục doanh nghiệp.',
+  },
+  {
+    year: '2006 – 2014',
+    title: 'Xây Dựng Nền Tảng Thời Trang',
+    desc: 'Ra mắt các thương hiệu thời trang Milvus và Bluekite, tích lũy kinh nghiệm chuyên sâu về thiết kế, phát triển sản phẩm, form dáng và trải nghiệm người mặc. Đây là nền tảng quan trọng tạo nên tư duy "thời trang hóa đồng phục" của Tân Phạm Gia sau này.',
+  },
+  {
+    year: '2007 – 2012',
+    title: 'Chuẩn Hóa Năng Lực Sản Xuất',
+    desc: 'Được chứng nhận Hàng Việt Nam Chất Lượng Cao, mở rộng cơ sở sản xuất và tham gia các chương trình nâng cao năng lực doanh nghiệp cùng UNIDO. Giai đoạn đánh dấu bước chuyển mình về chất lượng, quy trình và năng lực cạnh tranh.',
+  },
+  {
+    year: '2019',
+    title: 'Chuyển Mình Để Phát Triển',
+    desc: 'Chuyển đổi sang mô hình Công ty Cổ phần, nâng cao năng lực quản trị và đầu tư cho giai đoạn phát triển mới. Từng bước hoàn thiện hệ sinh thái thiết kế – sản xuất – kiểm soát chất lượng dành cho khách hàng doanh nghiệp.',
+  },
+  {
+    year: '2023 – Nay',
+    title: 'Đồng Hành Cùng Doanh Nghiệp Việt',
+    desc: 'Tân Phạm Gia tiếp tục theo đuổi sứ mệnh nâng tầm hình ảnh doanh nghiệp Việt thông qua những giải pháp đồng phục được phát triển bằng tư duy thời trang, năng lực sản xuất hiện đại và cam kết đồng hành dài hạn.',
+  },
+];
+
+export const missionVision = {
+  mission:
+    'Mang đến giải pháp đồng phục giúp doanh nghiệp nâng tầm hình ảnh thương hiệu, xây dựng đội ngũ chuyên nghiệp và tạo trải nghiệm mặc tốt hơn cho người lao động mỗi ngày đi làm.',
+  vision:
+    'Trở thành thương hiệu giải pháp đồng phục doanh nghiệp hàng đầu Việt Nam và từng bước trở thành đối tác sản xuất đồng phục tin cậy cho các doanh nghiệp quốc tế.',
+};
+
+export const coreValues = [
+  {
+    num: '01',
+    title: 'Tính chuyên nghiệp',
+    desc: 'Tư duy chuyên nghiệp trong từng quy trình — từ tiếp nhận yêu cầu, tư vấn chiến lược, thiết kế, sản xuất đến giao hàng và hậu mãi. Không có "đủ rồi" — chỉ có "tốt hơn được không".',
+  },
+  {
+    num: '02',
+    title: 'Tính đồng bộ',
+    desc: 'Đảm bảo tính đồng bộ tuyệt đối trong mọi đơn hàng — màu sắc, chất liệu, kích cỡ, đường may nhất quán xuyên suốt dù đặt nhiều đợt hay nhiều chi nhánh trên toàn quốc.',
+  },
+  {
+    num: '03',
+    title: 'Tinh thần thời trang',
+    desc: 'Ứng dụng xu hướng thời trang hiện đại vào đồng phục doanh nghiệp — để nhân viên không chỉ mặc vì bắt buộc mà tự hào khi khoác lên người mỗi ngày đi làm.',
+  },
+  {
+    num: '04',
+    title: 'Năng lực sản xuất công nghiệp',
+    desc: 'Năng lực sản xuất công nghiệp ổn định và quy mô, đáp ứng đơn hàng từ 50 đến 100.000 bộ với chất lượng đồng đều — không phụ thuộc vào quy mô hay thời điểm trong năm.',
+  },
+  {
+    num: '05',
+    title: 'Đồng hành dài hạn',
+    desc: 'Không phải giao dịch một lần. TPG xây dựng quan hệ đối tác chiến lược, hỗ trợ doanh nghiệp quản trị đồng phục bền vững theo thời gian — như một phòng đồng phục nội bộ thuê ngoài đáng tin cậy.',
+  },
+];
+
+export const productionCapacity = {
+  intro:
+    'Năng lực sản xuất là nền tảng của sự ổn định. Tân Phạm Gia sở hữu hệ thống sản xuất trực tiếp cùng quy trình kiểm soát chất lượng nhiều lớp, đảm bảo mỗi sản phẩm được bàn giao đúng tiêu chuẩn, đúng tiến độ và đồng nhất trên quy mô lớn.',
+  stats: [
+    { value: '2.000m²', label: 'Nhà xưởng sản xuất' },
+    { value: '30.000+', label: 'Sản phẩm/tháng' },
+    { value: 'QC đa tầng', label: 'Kiểm soát từ nguyên liệu đến thành phẩm' },
+    { value: 'Đồng bộ', label: 'Chất lượng qua nhiều đợt sản xuất' },
+    { value: 'Chủ động', label: 'Tiến độ — không phụ thuộc trung gian' },
+    { value: 'Linh hoạt', label: 'Từ 100 đến hàng chục nghìn sản phẩm' },
+  ],
+  qcTitle: 'Kiểm soát chất lượng 5 tầng',
+  qcDesc:
+    'Quy trình kiểm tra nghiêm ngặt từ: Sợi vải đầu vào, Cắt vải, May bán thành phẩm, Hoàn thiện và Kiểm định đóng gói cuối cùng.',
+  qcStandards: ['ISO 9001:2015', 'Tiêu chuẩn Oeko-Tex', 'Kim may Groz-Beckert', 'Chỉ may Coats'],
+  factoryImage:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuD7szr7Elx-oAqCEnir2uiBqNE-4WpmIm10Kj1YsgXyu1XMFvP0qvIXYrsMpRh9sztusxsq8_7_MFPstpomb4RaDeTg9J3ldf2CSKwYUq91qGdHVM6Dm9YkfE3Rdfay_snBPthtK7WWCq_NFHZ3j3Kua1MgJAT-qQPXwlpAIQIDLIpk4Njn_msEnsXh9DyyRtwkvdNU5u10NXpGyYseM_HBo6gwnr6IFqeZ9gHXI1CrvRQnXAxx3UyIT7UIbTDEMKjd1gdxbZwWKrKl',
+  qcImage:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCZF2amQyazt-GlhQH0DeUYXVZBkumEl5R6CgjdG-dn0i5IrhMtCB2ZMm9VUkZRwiIQIWIztfTbQsGMzRLvuaT2VHY6uWPPQHTjMlgpApeytXq5twxbrE7JaH5DBMM3Wq0I6G3KUtyoE2pR9jZvWUthhvBo7IZAZV3S32L0TVLkejbhD6tP9cSh8EF0MwW4eWy5qOXNzFXEsmwc7o-jKSwr2uoIeviT4x3KWtNwCtrU8SJWzNs3WVp6UPimb_JxHku0lc8G80XNvUiu',
+};
+
+export const teamDepartments = [
+  {
+    num: '01',
+    icon: 'support_agent',
+    title: 'Tư vấn & phát triển giải pháp',
+    desc: 'Đồng hành cùng doanh nghiệp từ giai đoạn khảo sát nhu cầu đến xây dựng phương án triển khai.',
+  },
+  {
+    num: '02',
+    icon: 'draw',
+    title: 'Thiết kế & phát triển mẫu',
+    desc: 'Nghiên cứu form dáng, chất liệu và nhận diện thương hiệu để tạo ra sản phẩm phù hợp.',
+  },
+  {
+    num: '03',
+    icon: 'precision_manufacturing',
+    title: 'Sản xuất & quản lý chất lượng',
+    desc: 'Đảm bảo chất lượng ổn định trong từng công đoạn và từng đơn hàng.',
+  },
+  {
+    num: '04',
+    icon: 'handshake',
+    title: 'Chăm sóc khách hàng & hậu mãi',
+    desc: 'Theo sát quá trình triển khai và hỗ trợ doanh nghiệp trong suốt quá trình sử dụng.',
+  },
+];
+
+export const testimonials = [
+  {
+    quote:
+      'Đội ngũ tư vấn rất kỹ từ thiết kế đến chất liệu nên chúng tôi khá yên tâm trong suốt quá trình triển khai. Đồng phục hoàn thiện đẹp, nhân viên mặc thoải mái và tạo được hình ảnh chuyên nghiệp.',
+    name: 'Ông Trương Hoàng Nam',
+    role: 'CEO, Hoàng Thiên Scale',
+  },
+  {
+    quote:
+      'Chúng tôi muốn một bộ đồng phục vừa chuyên nghiệp vừa tạo cảm giác thoải mái cho nhân viên khi mặc hằng ngày. Tân Phạm Gia đã tư vấn khá kỹ về chất liệu, form dáng và hỗ trợ điều chỉnh cho đến khi ra được mẫu phù hợp.',
+    name: 'Ông Đồng Minh Hồng',
+    role: 'CEO, Dịch vụ Kế toán Thuế DVL',
+  },
+  {
+    quote:
+      'Điều tôi đánh giá cao là khả năng kiểm soát chất lượng của Tân Phạm Gia. Từ mẫu duyệt đến thành phẩm đều được thực hiện nhất quán, quy trình phối hợp rõ ràng và đội ngũ luôn chủ động xử lý khi có phát sinh.',
+    name: 'Lê Văn Tùng',
+    role: 'Factory Ops Manager, Coca-Cola Philippines',
+  },
+];
+
+/** 2.7 — Ảnh giấy khen & chứng nhận (thay bằng file thật trong public/chung-nhan/) */
+export const certificateImages = [
+  {
+    title: 'ISO 9001:2015',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCZF2amQyazt-GlhQH0DeUYXVZBkumEl5R6CgjdG-dn0i5IrhMtCB2ZMm9VUkZRwiIQIWIztfTbQsGMzRLvuaT2VHY6uWPPQHTjMlgpApeytXq5twxbrE7JaH5DBMM3Wq0I6G3KUtyoE2pR9jZvWUthhvBo7IZAZV3S32L0TVLkejbhD6tP9cSh8EF0MwW4eWy5qOXNzFXEsmwc7o-jKSwr2uoIeviT4x3KWtNwCtrU8SJWzNs3WVp6UPimb_JxHku0lc8G80XNvUiu',
+  },
+  {
+    title: 'Hàng Việt Nam Chất Lượng Cao',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuD7szr7Elx-oAqCEnir2uiBqNE-4WpmIm10Kj1YsgXyu1XMFvP0qvIXYrsMpRh9sztusxsq8_7_MFPstpomb4RaDeTg9J3ldf2CSKwYUq91qGdHVM6Dm9YkfE3Rdfay_snBPthtK7WWCq_NFHZ3j3Kua1MgJAT-qQPXwlpAIQIDLIpk4Njn_msEnsXh9DyyRtwkvdNU5u10NXpGyYseM_HBo6gwnr6IFqeZ9gHXI1CrvRQnXAxx3UyIT7UIbTDEMKjd1gdxbZwWKrKl',
+  },
+  {
+    title: 'Giấy khen & Bằng khen',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDDcz4grX0Tjw51FTdB5HZbTmcrYakXnp7WFjK-2VEfZcR45qJg81c0tcljJFjAwIJTFzyhkp3cYgFg-pBIktGRpQoqXaQKlYSVtvmMkicnivUhEnczXAOlUWn7p3aZX0U1qcowjy_97kPA_r3-PivXNSaDbFOOOX_6jiBJmo4A0j0D9e3qRVIUh7laSY54Gct149JLW1vsGGGj8J52tBRRd7ZXIWlIfTCG2X92nrw60rSTjemYH3_FC4-qYNw2ligyY7SaiNTBUHs',
+  },
+  {
+    title: 'Chứng nhận UNIDO',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDxP6CFZlp3ggmwGEczcGuTImTcqVax4g1QmQUxHl1DEUyVAHj0mdNbxUD-EqS0F3NQNzNfbQN0ax9SIZ62ID0h1-x0UQyRqMxIcqji0Cu5nzwa_SLGBitLXLnORAxIjqlduZZUPE6upya0xjD-YldIjtwbptXZof83YaJpRItUxQzd9vn77CMyaTSd27VeqXiC6LQ61cE-PDK4tWlWjVlq7PuD1BVQYDnywiA_dC08kRpIMCQiDZhZG7GEehac2rkhi_CnAmr-JWA',
+  },
+];

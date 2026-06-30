@@ -1,0 +1,52 @@
+---
+import ClientLogo from './ClientLogo.astro';
+import { clientLogos } from '../data/site';
+
+/** Mobile: 3 cột × 3 hàng mỗi trang slider */
+const LOGOS_PER_PAGE = 9;
+const SLIDER_SETS = 3;
+
+const basePages = [
+  clientLogos.slice(0, LOGOS_PER_PAGE),
+  clientLogos.slice(LOGOS_PER_PAGE),
+].filter((page) => page.length > 0);
+
+const sliderPages = Array.from({ length: SLIDER_SETS }, () => basePages).flat();
+const pagesPerSet = basePages.length;
+---
+
+<div class="lg:col-span-3">
+  <!-- Mobile: 3 hàng/trang, vuốt vòng lặp vô hạn -->
+  <div class="home-clients-slider-wrap md:hidden" data-clients-slider>
+    <div class="home-clients-slider" role="list" aria-label="Thương hiệu đồng hành">
+      {
+        sliderPages.map((page, pageIndex) => {
+          const setIndex = Math.floor(pageIndex / pagesPerSet);
+          const isClone = setIndex !== 1;
+
+          return (
+            <div
+              class="home-clients-page"
+              role="listitem"
+              aria-hidden={isClone ? 'true' : undefined}
+            >
+              {page.map((client) => (
+                <ClientLogo name={client.name} logo={client.logo} />
+              ))}
+            </div>
+          );
+        })
+      }
+    </div>
+    {basePages.length > 1 && (
+      <p class="home-clients-slider-hint">Vuốt ngang để xem thêm thương hiệu</p>
+    )}
+  </div>
+
+  <!-- Desktop: lưới đầy đủ -->
+  <div class="hidden md:grid grid-cols-4 lg:grid-cols-5 gap-2.5 md:gap-3">
+    {clientLogos.map((client) => <ClientLogo name={client.name} logo={client.logo} />)}
+  </div>
+</div>
+
+<script src="../scripts/home-clients-slider.ts"></script>

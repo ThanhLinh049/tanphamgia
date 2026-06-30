@@ -1,0 +1,71 @@
+---
+import { mainNavigation } from '../data/site';
+
+interface Props {
+  currentPath?: string;
+  solid?: boolean;
+}
+
+const { currentPath = '', solid = false } = Astro.props;
+---
+
+<nav
+  id="site-nav"
+  class:list={[
+    'fixed top-0 w-full z-50 border-b transition-all duration-300',
+    solid
+      ? 'nav-scrolled bg-white/95 backdrop-blur-lg border-border-subtle shadow-soft'
+      : 'bg-white/10 backdrop-blur-lg border-white/15',
+  ]}
+  data-nav-solid={solid ? 'true' : undefined}
+>
+  <div
+    class="flex justify-between items-center px-6 md:px-8 py-3.5 max-w-container-max-width mx-auto"
+  >
+    <a class="flex items-center gap-3" href="/">
+      <div
+        class="w-10 h-10 bg-accent-gold rounded-xl flex items-center justify-center shadow-gold"
+      >
+        <span class="material-symbols-outlined text-ink-dark text-2xl">apparel</span>
+      </div>
+      <div class="flex flex-col leading-tight">
+        <span
+          class:list={[
+            'nav-brand-text font-display-lg text-xl font-bold tracking-tight',
+            solid ? 'text-ink-dark' : 'text-white',
+          ]}
+          >Tân Phạm Gia</span
+        >
+        <span
+          class:list={[
+            'nav-brand-text text-[10px] uppercase tracking-[0.2em] font-semibold hidden sm:block',
+            solid ? 'text-text-muted' : 'text-white/60',
+          ]}
+          >Đồng phục doanh nghiệp</span
+        >
+      </div>
+    </a>
+    <div class="hidden lg:flex gap-7 items-center">
+      {
+        mainNavigation.map((item) => (
+          <a
+            class:list={[
+              'nav-link text-sm font-medium transition-colors',
+              solid ? 'text-on-surface hover:text-accent-gold' : 'text-white/90 hover:text-accent-gold',
+              currentPath === item.href && 'nav-link-active text-accent-gold',
+            ]}
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+    <a
+      href="/tai-lieu"
+      class="bg-accent-gold text-ink-dark px-6 py-2.5 rounded-full text-sm font-bold hover:shadow-gold hover:scale-105 transition-all active:scale-95 shadow-soft"
+    >
+      Nhận Báo Giá
+    </a>
+  </div>
+</nav>

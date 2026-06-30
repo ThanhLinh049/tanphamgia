@@ -1,0 +1,19 @@
+---
+interface Props {
+  name: string;
+  logo: string;
+}
+
+const { name, logo } = Astro.props;
+---
+
+<div class="client-logo-cell" title={name}>
+  <img
+    alt={name}
+    class="client-logo-img"
+    loading="lazy"
+    src={logo}
+    onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+  />
+  <span class="client-logo-fallback">{name}</span>
+</div>
