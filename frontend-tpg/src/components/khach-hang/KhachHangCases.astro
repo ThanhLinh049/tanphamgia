@@ -1,0 +1,90 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+import { giaiPhapList } from '../../data/giai-phap';
+
+/** 4.4 → 4.6 Case study — tổng hợp toàn bộ dự án từ 4 giải pháp, không trùng lặp dữ liệu */
+const allCases = giaiPhapList.flatMap((solution) =>
+  solution.projects.map((project) => ({ project, solution })),
+);
+
+const featuredSlug = 'coca-cola-philippines';
+const featured = allCases.find((item) => item.project.slug === featuredSlug) ?? allCases[0];
+const rest = allCases.filter((item) => item !== featured);
+
+const caseUrl = (solutionSlug: string, projectSlug: string) =>
+  `/giai-phap/${solutionSlug}/du-an/${projectSlug}`;
+---
+
+<section class="bg-paper py-24 md:py-36" id="du-an">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 md:mb-20" data-reveal>
+      <SectionHeading title="Dự án tiêu biểu" eyebrow="Case studies" class="max-w-2xl" reveal={false} />
+      <p class="text-text-muted text-sm md:text-base max-w-xs leading-relaxed">
+        Kinh nghiệm triển khai thực tế cho doanh nghiệp sản xuất, FDI, ngân hàng và chuỗi hệ thống trên toàn quốc.
+      </p>
+    </div>
+
+    <!-- Case nổi bật -->
+    {
+      featured && (
+        <a
+          href={caseUrl(featured.solution.slug, featured.project.slug)}
+          class="group grid lg:grid-cols-12 gap-10 lg:gap-16 items-center border-t border-border-subtle pt-14 md:pt-16 mb-16 md:mb-24 no-underline"
+          data-reveal
+        >
+          <span class="block lg:col-span-7 overflow-hidden">
+            <img
+              src={featured.project.image}
+              alt={`Dự án ${featured.project.name}`}
+              loading="lazy"
+              class="w-full aspect-[16/10] object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+            />
+          </span>
+          <span class="block lg:col-span-5 space-y-5">
+            <span class="block text-[11px] font-bold uppercase tracking-[0.25em] text-brass-dark">
+              {featured.solution.name}
+            </span>
+            <span class="block font-display-lg text-3xl md:text-4xl font-bold text-ink-dark tracking-tight transition-colors duration-300 group-hover:text-brass-dark">
+              {featured.project.name}
+            </span>
+            <span class="block font-serif text-lg md:text-xl text-text-muted leading-relaxed">
+              {featured.project.stats}
+            </span>
+            <span class="block text-text-muted text-[15px] leading-[1.8] line-clamp-3">{featured.project.intro}</span>
+            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-ink-dark group-hover:text-brass-dark transition-colors duration-300 pt-1">
+              Xem case study
+              <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </span>
+          </span>
+        </a>
+      )
+    }
+
+    <!-- Các dự án còn lại — lưới editorial -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14" data-reveal>
+      {
+        rest.map(({ project, solution }) => (
+          <a href={caseUrl(solution.slug, project.slug)} class="group block no-underline">
+            <span class="block overflow-hidden mb-5">
+              <img
+                src={project.image}
+                alt={`Dự án ${project.name}`}
+                loading="lazy"
+                class="w-full aspect-[4/3] object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+              />
+            </span>
+            <span class="block space-y-2">
+              <span class="block text-[10px] font-bold uppercase tracking-[0.22em] text-brass-dark">
+                {solution.name}
+              </span>
+              <span class="block text-xl font-bold text-ink-dark tracking-tight transition-colors duration-300 group-hover:text-brass-dark">
+                {project.name}
+              </span>
+              <span class="block font-serif text-[15px] text-text-muted leading-relaxed">{project.stats}</span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

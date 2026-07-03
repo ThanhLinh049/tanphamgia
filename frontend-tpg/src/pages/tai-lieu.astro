@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import TaiLieuLists from '../components/tai-lieu/TaiLieuLists.astro';
+import TaiLieuForm from '../components/tai-lieu/TaiLieuForm.astro';
+import { taiLieuSeo, taiLieuHeader } from '../data/tai-lieu';
+---
+
+<BaseLayout title={taiLieuSeo.title} description={taiLieuSeo.description}>
+  <PageHeader {...taiLieuHeader} />
+  <TaiLieuLists />
+  <TaiLieuForm />
+</BaseLayout>
+

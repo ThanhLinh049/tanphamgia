@@ -1,0 +1,69 @@
+---
+/** Phân trang dùng chung — tự ẩn khi chỉ có 1 trang */
+
+interface Props {
+  currentPage: number;
+  lastPage: number;
+  prevUrl?: string;
+  nextUrl?: string;
+  /** Đường dẫn gốc của danh sách, vd "/tin-tuc" */
+  baseUrl: string;
+}
+
+const { currentPage, lastPage, prevUrl, nextUrl, baseUrl } = Astro.props;
+
+const pageUrl = (page: number) => (page === 1 ? baseUrl : `${baseUrl}/${page}`);
+const pages = Array.from({ length: lastPage }, (_, index) => index + 1);
+---
+
+{
+  lastPage > 1 && (
+    <nav aria-label="Phân trang" class="flex items-center justify-center gap-2 pt-16 md:pt-20">
+      {prevUrl ? (
+        <a
+          href={prevUrl}
+          class="inline-flex items-center justify-center w-11 h-11 border border-border-subtle text-ink-dark text-sm transition-colors duration-300 hover:border-ink-dark no-underline"
+          aria-label="Trang trước"
+        >
+          ←
+        </a>
+      ) : (
+        <span class="inline-flex items-center justify-center w-11 h-11 border border-border-subtle/50 text-text-muted/40 text-sm" aria-hidden="true">
+          ←
+        </span>
+      )}
+
+      {pages.map((page) =>
+        page === currentPage ? (
+          <span
+            aria-current="page"
+            class="inline-flex items-center justify-center w-11 h-11 bg-brass text-ink-dark text-sm font-bold"
+          >
+            {page}
+          </span>
+        ) : (
+          <a
+            href={pageUrl(page)}
+            class="inline-flex items-center justify-center w-11 h-11 border border-border-subtle text-ink-dark text-sm font-semibold transition-colors duration-300 hover:border-ink-dark no-underline"
+          >
+            {page}
+          </a>
+        ),
+      )}
+
+      {nextUrl ? (
+        <a
+          href={nextUrl}
+          class="inline-flex items-center justify-center w-11 h-11 border border-border-subtle text-ink-dark text-sm transition-colors duration-300 hover:border-ink-dark no-underline"
+          aria-label="Trang sau"
+        >
+          →
+        </a>
+      ) : (
+        <span class="inline-flex items-center justify-center w-11 h-11 border border-border-subtle/50 text-text-muted/40 text-sm" aria-hidden="true">
+          →
+        </span>
+      )}
+    </nav>
+  )
+}

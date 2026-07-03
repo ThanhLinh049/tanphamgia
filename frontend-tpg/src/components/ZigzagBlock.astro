@@ -1,0 +1,54 @@
+---
+/**
+ * Khối zig-zag dùng chung: ảnh lớn + số liệu chồng góc ảnh (trái/phải xen kẽ)
+ * và cột chữ eyebrow + tiêu đề + mô tả + bullets. Dùng ở trang chủ (năng lực)
+ * và trang giới thiệu (xưởng, QC).
+ */
+interface Props {
+  image: string;
+  alt: string;
+  stat: { value: string; label: string };
+  eyebrow: string;
+  title: string;
+  desc: string;
+  bullets?: string[];
+  /** true = ảnh nằm bên phải */
+  flip?: boolean;
+  /** h2 khi khối là tiêu đề chính của section, h3 khi đã có heading section */
+  headingTag?: 'h2' | 'h3';
+}
+
+const { image, alt, stat, eyebrow, title, desc, bullets = [], flip = false, headingTag = 'h2' } = Astro.props;
+const Heading = headingTag;
+---
+
+<div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-center" data-reveal>
+  <figure class:list={['relative lg:col-span-7 m-0 overflow-hidden', flip && 'lg:order-2']}>
+    <img
+      src={image}
+      alt={alt}
+      loading="lazy"
+      class="w-full aspect-[16/11] object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03]"
+    />
+    <figcaption class="absolute bottom-0 left-0 bg-ink-dark text-white px-7 py-5 md:px-9 md:py-6">
+      <span class="block font-serif text-2xl md:text-3xl leading-tight">{stat.value}</span>
+      <span class="block text-[10px] uppercase tracking-[0.2em] text-white/55 font-semibold mt-1.5">{stat.label}</span>
+    </figcaption>
+  </figure>
+  <div class:list={['lg:col-span-5 space-y-5', flip && 'lg:order-1']}>
+    <p class="text-[11px] font-bold uppercase tracking-[0.3em] text-brass-dark">{eyebrow}</p>
+    <Heading class="font-display-lg text-2xl md:text-4xl font-bold tracking-tight text-ink-dark leading-[1.15]">
+      {title}
+    </Heading>
+    <p class="text-text-muted text-[15px] md:text-[17px] leading-[1.8]">{desc}</p>
+    {
+      bullets.length > 0 && (
+        <ul class="grid grid-cols-2 gap-x-6 gap-y-3 pt-3 border-t border-border-subtle mt-2 list-none m-0 p-0">
+          {bullets.map((bullet) => (
+            <li class="text-[13px] font-semibold text-ink-dark pt-3">— {bullet}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</div>

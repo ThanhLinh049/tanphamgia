@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Tân Phạm Gia | Đồng Phục Doanh Nghiệp Cao Cấp',
+  description = 'Tư vấn, thiết kế và sản xuất đồng phục doanh nghiệp theo yêu cầu.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html class="scroll-smooth" lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-white text-on-surface font-body-md selection:bg-brass selection:text-ink-dark"
+  >
+    <SiteHeader />
+    <slot />
+    <SiteFooter />
+    <script src="../scripts/reveal.ts"></script>
+  </body>
+</html>

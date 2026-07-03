@@ -1,0 +1,30 @@
+---
+/** Link mũi tên → dùng chung — hover đổi màu + mũi tên trượt sang phải (theo design system). */
+interface Props {
+  href: string;
+  /** ink: nền sáng · white: nền tối · white-muted: nền tối phụ · brass: nhấn vàng trên nền tối */
+  tone?: 'ink' | 'white' | 'white-muted' | 'brass';
+  class?: string;
+}
+
+const { href, tone = 'ink', class: className } = Astro.props;
+
+const tones = {
+  ink: 'text-ink-dark hover:text-brass-dark',
+  white: 'text-white hover:text-brass',
+  'white-muted': 'text-white/80 hover:text-brass',
+  brass: 'text-brass hover:text-white',
+}[tone];
+---
+
+<a
+  href={href}
+  class:list={[
+    'group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] transition-colors duration-300 no-underline',
+    tones,
+    className,
+  ]}
+>
+  <slot />
+  <span class="inline-block transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
+</a>

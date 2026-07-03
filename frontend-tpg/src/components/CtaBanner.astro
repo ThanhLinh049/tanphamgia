@@ -1,0 +1,92 @@
+---
+import { siteContact } from '../data/site';
+
+/**
+ * CTA cuối trang — component duy nhất cho toàn site (gộp từ HomeCta/AboutCta cũ).
+ * variant 'brass': nền vàng chủ đạo (mặc định) · 'dark': nền tối + dòng hotline/email.
+ */
+interface Props {
+  title?: string;
+  desc?: string;
+  variant?: 'brass' | 'dark';
+  id?: string;
+}
+
+const {
+  title = 'Sẵn sàng cho dự án đồng phục của bạn?',
+  desc = 'Liên hệ ngay để nhận tư vấn miễn phí và báo giá chi tiết cho doanh nghiệp của bạn.',
+  variant = 'brass',
+  id,
+} = Astro.props;
+
+const isDark = variant === 'dark';
+const buttonBase =
+  'px-10 py-4 text-xs font-bold uppercase tracking-[0.16em] transition-colors duration-300 text-center w-full sm:w-auto';
+---
+
+<section
+  class:list={[
+    isDark ? 'bg-ink-dark text-white py-28 md:py-40' : 'bg-brass text-ink-dark py-24 md:py-32',
+  ]}
+  id={id}
+>
+  <div
+    class:list={['max-w-container-max-width mx-auto px-6 md:px-8 text-center', isDark ? 'space-y-9' : 'space-y-8']}
+    data-reveal
+  >
+    <h2
+      class:list={[
+        'font-display-lg font-bold tracking-tight mx-auto',
+        isDark
+          ? 'text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[1.08] max-w-4xl'
+          : 'text-[clamp(2rem,5vw,3.75rem)] leading-[1.1] max-w-3xl',
+      ]}
+    >
+      {title}
+    </h2>
+    <p class:list={['max-w-xl mx-auto text-base md:text-lg leading-relaxed', isDark ? 'text-white/60' : 'text-ink-dark/70']}>
+      {desc}
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2">
+      <a
+        href="/#tai-lieu"
+        class:list={[
+          buttonBase,
+          isDark
+            ? 'bg-brass text-ink-dark hover:bg-white'
+            : 'bg-ink-dark text-white hover:bg-white hover:text-ink-dark',
+        ]}
+      >
+        Nhận tư vấn giải pháp
+      </a>
+      <a
+        href="/#tai-lieu"
+        class:list={[
+          buttonBase,
+          isDark ? 'bg-white text-ink-dark hover:bg-brass' : 'bg-white text-ink-dark hover:bg-ink-dark hover:text-white',
+        ]}
+      >
+        Tải hồ sơ năng lực
+      </a>
+    </div>
+    {
+      isDark && (
+        <div class="text-sm text-white/45 pt-4 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-0">
+          <span class="whitespace-nowrap">
+            Hotline{' '}
+            <a href={siteContact.phoneHref} class="text-white/85 font-semibold hover:text-brass transition-colors no-underline">
+              {siteContact.phone}
+            </a>
+          </span>
+          <span class="hidden sm:inline mx-3 text-white/20">·</span>
+          <a
+            href={`mailto:${siteContact.email}`}
+            class="whitespace-nowrap text-white/85 font-semibold hover:text-brass transition-colors no-underline"
+          >
+            {siteContact.email}
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>

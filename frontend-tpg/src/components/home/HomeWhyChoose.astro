@@ -1,0 +1,17 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+import IndexList from '../IndexList.astro';
+import { whyChoose } from '../../data/site';
+
+/** Tại sao chọn TPG — index list 01–04 (Sitemap 1.4) */
+---
+
+<section class="bg-white py-24 md:py-36" id="tai-sao">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8">
+    <SectionHeading
+      eyebrow="Tại sao chọn Tân Phạm Gia"
+      title='Tiên phong "Thời trang hóa" đồng phục doanh nghiệp'
+    />
+    <IndexList items={whyChoose} />
+  </div>
+</section>

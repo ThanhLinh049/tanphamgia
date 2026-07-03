@@ -1,0 +1,20 @@
+---
+import { homeTestimonial } from '../../data/site';
+
+/** Testimonial pull-quote serif (Sitemap 1.6) */
+---
+
+<section class="bg-paper py-24 md:py-40" id="feedback">
+  <div class="max-w-4xl mx-auto px-6 md:px-8 text-center" data-reveal>
+    <p class="font-serif text-6xl md:text-7xl text-brass leading-none mb-8" aria-hidden="true">“</p>
+    <blockquote class="m-0 space-y-10">
+      <p class="font-serif italic text-[clamp(1.375rem,2.8vw,2.125rem)] leading-[1.55] text-ink-dark">
+        {homeTestimonial.text}
+      </p>
+      <footer class="space-y-1">
+        <cite class="not-italic font-bold text-sm md:text-base text-ink-dark block">{homeTestimonial.author}</cite>
+        <p class="text-xs uppercase tracking-[0.2em] text-text-muted font-semibold">{homeTestimonial.role}</p>
+      </footer>
+    </blockquote>
+  </div>
+</section>

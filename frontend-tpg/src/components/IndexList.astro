@@ -1,0 +1,32 @@
+---
+/**
+ * Danh sách chỉ mục đánh số dùng chung (01–0n) — hàng chia divider, số serif vàng,
+ * hover đổi nền (theo design system không dùng card).
+ */
+interface Props {
+  items: { num: string; title: string; desc: string }[];
+  /** sm: chữ nhỏ hơn cho danh sách dài (vd 5 giá trị cốt lõi) */
+  size?: 'md' | 'sm';
+}
+
+const { items, size = 'md' } = Astro.props;
+const rowPad = size === 'md' ? 'py-8 md:py-12' : 'py-8 md:py-10';
+const titleSize = size === 'md' ? 'text-xl md:text-2xl' : 'text-lg md:text-xl';
+const descSize = size === 'md' ? 'text-[15px] md:text-base' : 'text-[15px]';
+---
+
+<ol class="border-t border-border-subtle list-none m-0 p-0" data-reveal>
+  {
+    items.map((item) => (
+      <li class="group border-b border-border-subtle transition-colors duration-500 hover:bg-paper">
+        <div class:list={['grid md:grid-cols-12 gap-3 md:gap-8 items-baseline', rowPad]}>
+          <span class="md:col-span-2 font-serif text-2xl md:text-3xl text-brass-dark">{item.num}</span>
+          <h3 class:list={['md:col-span-4 font-bold text-ink-dark tracking-tight leading-snug', titleSize]}>
+            {item.title}
+          </h3>
+          <p class:list={['md:col-span-6 text-text-muted leading-[1.75]', descSize]}>{item.desc}</p>
+        </div>
+      </li>
+    ))
+  }
+</ol>

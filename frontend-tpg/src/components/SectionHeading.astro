@@ -1,0 +1,44 @@
+---
+/**
+ * Tiêu đề section dùng chung toàn site — eyebrow + h2 + mô tả (tùy chọn).
+ * Chuẩn hóa: eyebrow brass-dark trên nền sáng, brass trên nền tối.
+ */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  desc?: string;
+  /** 'dark' khi section nền ink-dark */
+  tone?: 'light' | 'dark';
+  /** lg: section chính · md: section phụ · num: section đánh số trang giải pháp */
+  size?: 'lg' | 'md' | 'num';
+  /** Wrapper (max-width + margin) — mặc định khối heading đứng đầu section */
+  class?: string;
+  /** Tắt khi wrapper cha đã có data-reveal (header dạng chia 2 cột) */
+  reveal?: boolean;
+}
+
+const {
+  eyebrow,
+  title,
+  desc,
+  tone = 'light',
+  size = 'lg',
+  class: className = 'max-w-3xl mb-14 md:mb-20',
+  reveal = true,
+} = Astro.props;
+
+const eyebrowColor = tone === 'dark' ? 'text-brass' : 'text-brass-dark';
+const titleColor = tone === 'dark' ? 'text-white' : 'text-ink-dark';
+const descColor = tone === 'dark' ? 'text-white/65' : 'text-text-muted';
+const titleSize = {
+  lg: 'text-3xl md:text-5xl leading-[1.12]',
+  md: 'text-2xl md:text-4xl leading-[1.15]',
+  num: 'text-3xl md:text-[2.75rem] md:leading-[1.15]',
+}[size];
+---
+
+<div class={className} data-reveal={reveal ? '' : undefined}>
+  {eyebrow && <p class:list={['text-[11px] font-bold uppercase tracking-[0.3em] mb-5', eyebrowColor]}>{eyebrow}</p>}
+  <h2 class:list={['font-display-lg font-bold tracking-tight', titleSize, titleColor]}>{title}</h2>
+  {desc && <p class:list={['mt-6 text-[15px] md:text-[17px] leading-[1.8] max-w-2xl', descColor]}>{desc}</p>}
+</div>

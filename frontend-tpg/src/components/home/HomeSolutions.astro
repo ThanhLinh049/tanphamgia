@@ -1,0 +1,47 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+import { solutions } from '../../data/site';
+
+/** Giải pháp — mục lục lớn, ảnh preview hiện khi hover (Sitemap 1.5) */
+---
+
+<section class="bg-paper py-24 md:py-36" id="giai-phap">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 md:mb-20" data-reveal>
+      <SectionHeading title="Giải pháp đồng phục toàn diện" eyebrow="Giải pháp" class="max-w-2xl" reveal={false} />
+      <p class="text-text-muted text-sm md:text-base max-w-xs leading-relaxed">
+        Lắng nghe và thấu hiểu để đưa ra giải pháp phù hợp nhất cho từng mô hình doanh nghiệp.
+      </p>
+    </div>
+
+    <div class="border-t border-border-subtle" data-reveal>
+      {
+        solutions.map((item, index) => (
+          <a
+            href={`/giai-phap/${item.slug}`}
+            class="group grid grid-cols-12 items-center gap-4 md:gap-8 py-7 md:py-9 border-b border-border-subtle no-underline"
+          >
+            <span class="col-span-2 md:col-span-1 font-serif text-lg md:text-xl text-text-muted/70">
+              0{index + 1}
+            </span>
+            <h3 class="col-span-10 md:col-span-5 font-display-lg text-xl sm:text-2xl md:text-[2rem] md:leading-[1.2] font-bold text-ink-dark tracking-tight">
+              <span class="solution-index-title">{item.title}</span>
+            </h3>
+            <p class="hidden lg:block col-span-4 text-sm text-text-muted leading-relaxed pr-4">{item.desc}</p>
+            <span class="hidden md:flex md:col-span-6 lg:col-span-2 items-center justify-end gap-6">
+              <span class="relative w-24 xl:w-32 aspect-[4/3] overflow-hidden opacity-0 translate-x-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              </span>
+              <span class="text-ink-dark text-xl transition-all duration-300 group-hover:text-brass-dark group-hover:translate-x-1.5">→</span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

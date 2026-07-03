@@ -1,0 +1,107 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+import ArrowLink from '../ArrowLink.astro';
+import { blogPosts, blogSectionMeta } from '../../data/site';
+
+const featured = blogPosts[0];
+const gridPosts = blogPosts.slice(1);
+const { allPostsHref } = blogSectionMeta;
+const sliderSets = 3;
+const sliderPosts = Array.from({ length: sliderSets }, () => blogPosts).flat();
+---
+
+<section class="home-news py-24 md:py-36 bg-white" id="tin-tuc">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8">
+    <header
+      class="home-news-header flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14 md:mb-20"
+      data-reveal
+    >
+      <SectionHeading title="Tin tức & kiến thức ngành" eyebrow="Kinh nghiệm & Xu hướng" class="max-w-2xl" reveal={false} />
+      <ArrowLink href={allPostsHref} class="shrink-0 self-start sm:self-auto">Tất cả bài viết</ArrowLink>
+    </header>
+
+    <!-- Mobile: slider vuốt ngang vòng lặp -->
+    <div class="home-news-slider-wrap md:hidden" data-news-slider>
+      <div class="home-news-slider" role="list">
+        {
+          sliderPosts.map((post, index) => {
+            const setIndex = Math.floor(index / blogPosts.length);
+            const isClone = setIndex !== 1;
+
+            return (
+              <a
+                href={post.href ?? allPostsHref}
+                class="home-news-slide group no-underline text-ink-dark"
+                role="listitem"
+                aria-hidden={isClone ? 'true' : undefined}
+                tabindex={isClone ? -1 : undefined}
+              >
+                <figure class="home-news-slide-media m-0 overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.alt}
+                    loading="lazy"
+                    class="transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
+                  />
+                </figure>
+                <div class="home-news-slide-body pt-4 space-y-2">
+                  <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-brass block">{post.category}</span>
+                  <h3 class="text-base font-bold text-ink-dark leading-snug">{post.title}</h3>
+                  <p class="text-xs text-text-muted line-clamp-2 leading-relaxed">{post.excerpt}</p>
+                </div>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <!-- Desktop: 1 bài lớn + danh sách text editorial -->
+    <div class="hidden md:grid grid-cols-12 gap-12 lg:gap-20 items-start" data-reveal>
+      {
+        featured && (
+          <a
+            href={featured.href ?? allPostsHref}
+            class="group col-span-7 block no-underline text-ink-dark"
+          >
+            <span class="block overflow-hidden mb-7">
+              <img
+                alt={featured.alt}
+                class="w-full aspect-[16/10] object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                src={featured.image}
+                loading="lazy"
+              />
+            </span>
+            <span class="block space-y-3 max-w-xl">
+              <span class="text-[11px] font-bold uppercase tracking-[0.25em] text-brass block">{featured.category}</span>
+              <h3 class="font-display-lg text-2xl lg:text-[2rem] lg:leading-[1.2] font-bold tracking-tight transition-colors duration-300 group-hover:text-brass">
+                {featured.title}
+              </h3>
+              <p class="text-text-muted text-[15px] leading-[1.75]">{featured.excerpt}</p>
+            </span>
+          </a>
+        )
+      }
+
+      <div class="col-span-5 border-t border-border-subtle">
+        {
+          gridPosts.map((post) => (
+            <a
+              href={post.href ?? allPostsHref}
+              class="group block py-7 border-b border-border-subtle no-underline text-ink-dark"
+            >
+              <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-brass block mb-2.5">{post.category}</span>
+              <h4 class="text-lg font-bold leading-snug tracking-tight transition-colors duration-300 group-hover:text-brass mb-2">
+                {post.title}
+              </h4>
+              <p class="text-[13px] text-text-muted line-clamp-2 leading-relaxed">{post.excerpt}</p>
+            </a>
+          ))
+        }
+        <ArrowLink href={allPostsHref} class="pt-7">Xem tất cả bài viết</ArrowLink>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../../scripts/home-news-slider.ts"></script>

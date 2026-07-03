@@ -1,0 +1,109 @@
+---
+import type { DuAn, GiaiPhap } from '../../data/giai-phap';
+
+interface Props {
+  project: DuAn;
+  solution: GiaiPhap;
+}
+
+const { project, solution } = Astro.props;
+const otherProjects = solution.projects.filter((item) => item.slug !== project.slug);
+
+const columns = [
+  { label: 'Thách thức', items: project.challenges, marker: '—' },
+  { label: 'Giải pháp', items: project.solutions, marker: '—' },
+  { label: 'Kết quả', items: project.results, marker: '✓' },
+];
+
+/** Trang case study — header tối, intro, 3 cột Thách thức / Giải pháp / Kết quả */
+---
+
+<!-- Header -->
+<header class="relative bg-ink-dark text-white overflow-hidden">
+  <div class="absolute inset-0 opacity-25">
+    <img alt="" class="w-full h-full object-cover" src={project.image} />
+    <div class="absolute inset-0 bg-gradient-to-t from-ink-dark via-ink-dark/60 to-ink-dark/30"></div>
+  </div>
+  <div class="relative z-10 flex flex-col justify-end min-h-[440px] md:min-h-[540px] max-w-container-max-width mx-auto px-6 md:px-8 pt-36 md:pt-44 pb-16 md:pb-24">
+    {project.field && (
+      <p class="text-[11px] font-bold uppercase tracking-[0.3em] text-brass mb-5">{project.field}</p>
+    )}
+    <h1 class="font-display-lg font-bold text-[clamp(2.25rem,5.5vw,4.25rem)] leading-[1.06] tracking-[-0.02em] max-w-4xl mb-6">
+      {project.name}
+    </h1>
+    <p class="font-serif text-lg md:text-2xl text-brass leading-relaxed">{project.stats}</p>
+  </div>
+</header>
+
+<!-- Bối cảnh dự án -->
+<section class="bg-white py-24 md:py-32">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="lg:col-span-6 space-y-6" data-reveal>
+      <p class="text-[11px] font-bold uppercase tracking-[0.3em] text-brass-dark">Bối cảnh</p>
+      <p class="font-serif text-xl md:text-2xl leading-[1.6] text-ink-dark">{project.intro}</p>
+    </div>
+    <figure class="lg:col-span-6 m-0 overflow-hidden" data-reveal>
+      <img
+        src={project.image}
+        alt={`Dự án ${project.name}`}
+        loading="lazy"
+        class="w-full aspect-[16/10] object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03]"
+      />
+    </figure>
+  </div>
+</section>
+
+<!-- Thách thức / Giải pháp / Kết quả -->
+<section class="bg-paper py-24 md:py-32">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8 grid md:grid-cols-3 gap-12 md:gap-0" data-reveal>
+    {
+      columns.map((column, index) => (
+        <div class:list={['space-y-6', index > 0 && 'md:border-l md:border-border-subtle md:pl-12', index < 2 && 'md:pr-12']}>
+          <h2 class="flex items-baseline gap-4">
+            <span class="font-serif text-2xl md:text-3xl text-brass-dark">{String(index + 1).padStart(2, '0')}</span>
+            <span class="text-[13px] font-bold uppercase tracking-[0.2em] text-ink-dark">{column.label}</span>
+          </h2>
+          <ul class="list-none m-0 p-0 space-y-4">
+            {column.items.map((item) => (
+              <li class="flex gap-3 text-[15px] text-text-muted leading-[1.75]">
+                <span class="text-brass-dark font-semibold shrink-0" aria-hidden="true">{column.marker}</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<!-- Dự án khác cùng giải pháp -->
+{
+  otherProjects.length > 0 && (
+    <section class="bg-white py-24 md:py-32">
+      <div class="max-w-container-max-width mx-auto px-6 md:px-8">
+        <div class="max-w-3xl mb-12 md:mb-16" data-reveal>
+          <h2 class="font-display-lg text-2xl md:text-4xl font-bold text-ink-dark tracking-tight leading-[1.15]">
+            Dự án khác — {solution.name}
+          </h2>
+        </div>
+        <div class="border-t border-border-subtle" data-reveal>
+          {otherProjects.map((item) => (
+            <a
+              href={`/giai-phap/${solution.slug}/du-an/${item.slug}`}
+              class="group grid md:grid-cols-12 gap-3 md:gap-8 items-center py-6 md:py-8 border-b border-border-subtle no-underline"
+            >
+              <h3 class="md:col-span-4 text-lg md:text-2xl font-bold text-ink-dark tracking-tight transition-colors duration-300 group-hover:text-brass-dark">
+                {item.name}
+              </h3>
+              <p class="md:col-span-6 font-serif text-base md:text-lg text-text-muted">{item.stats}</p>
+              <span class="hidden md:flex md:col-span-2 justify-end text-xl text-ink-dark transition-all duration-300 group-hover:text-brass-dark group-hover:translate-x-1.5">
+                →
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,80 @@
+---
+import { mainNavigation } from '../data/site';
+---
+
+<footer class="bg-ink-dark text-white pt-16 pb-8 md:pt-24 md:pb-12 border-t border-white/10">
+  <div
+    class="max-w-container-max-width mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-16"
+  >
+    <div class="space-y-6">
+      <a href="/" class="inline-block" aria-label="Tân Phạm Gia — Trang chủ">
+        <img
+          src="/images/logos/logo-tan-pham-gia.png"
+          alt="Tân Phạm Gia"
+          width="585"
+          height="108"
+          class="h-9 w-auto brightness-0 invert"
+        />
+      </a>
+      <p class="text-white/55 text-sm leading-[1.75] max-w-xs">
+        Kiến tạo giá trị thương hiệu thông qua quy trình thiết kế và sản xuất đồng phục chuẩn mực thời trang.
+      </p>
+    </div>
+    <div>
+      <h4 class="font-bold text-[11px] mb-6 text-brass uppercase tracking-[0.2em]">Liên kết nhanh</h4>
+      <ul class="space-y-4 text-sm list-none m-0 p-0">
+        {
+          mainNavigation.map((item) => (
+            <li>
+              <a class="text-white/55 hover:text-brass transition-colors duration-300 no-underline" href={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a class="text-white/55 hover:text-brass transition-colors duration-300 no-underline" href="/gioi-thieu#nang-luc"
+            >Năng lực sản xuất</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold text-[11px] mb-6 text-brass uppercase tracking-[0.2em]">Hỗ trợ</h4>
+      <ul class="space-y-4 text-sm list-none m-0 p-0">
+        <li>
+          <a class="text-white/55 hover:text-brass transition-colors duration-300 no-underline" href="#">Chính sách bảo mật</a>
+        </li>
+        <li>
+          <a class="text-white/55 hover:text-brass transition-colors duration-300 no-underline" href="#">Hướng dẫn chọn size</a>
+        </li>
+        <li>
+          <a class="text-white/55 hover:text-brass transition-colors duration-300 no-underline" href="#">Quy trình đổi trả</a>
+        </li>
+        <li>
+          <a class="text-white/55 hover:text-brass transition-colors duration-300 no-underline" href="/lien-he">Liên hệ</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold text-[11px] mb-6 text-brass uppercase tracking-[0.2em]">Văn phòng</h4>
+      <p class="text-white/65 text-sm mb-4 leading-[1.75]">
+        20A Thới An 15, Khu Phố 6, Phường Thới An, TP. Hồ Chí Minh
+      </p>
+      <p class="text-white text-sm mb-2 font-semibold">
+        Hotline: <a href="tel:0843406406" class="text-brass hover:text-white transition-colors no-underline">084 3406 406</a>
+      </p>
+      <p class="text-white/65 text-sm mb-2">
+        <a href="mailto:dongphuc@tanphamgia.com.vn" class="text-white/65 hover:text-brass transition-colors no-underline">dongphuc@tanphamgia.com.vn</a>
+      </p>
+      <p class="text-white/45 text-xs leading-relaxed">T2–T7: 8:00–18:00 · CN theo hẹn</p>
+    </div>
+  </div>
+  <div
+    class="max-w-container-max-width mx-auto px-6 md:px-8 mt-16 pt-8 border-t border-white/10 text-center"
+  >
+    <p class="text-white/40 text-xs tracking-wider">
+      © 2026 Tân Phạm Gia. All rights reserved. ISO 9001:2015 Certified.
+    </p>
+  </div>
+</footer>

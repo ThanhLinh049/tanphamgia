@@ -1,0 +1,61 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+import type { GiaiPhap } from '../../data/giai-phap';
+
+interface Props {
+  solution: GiaiPhap;
+}
+
+const { solution } = Astro.props;
+
+/** 03 — Danh mục sản phẩm & bảng thông số kỹ thuật vải (bảng hiện đại, clean) */
+---
+
+<section class="bg-white py-24 md:py-36">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-16 md:mb-20" data-reveal>
+      <SectionHeading
+        eyebrow="03 — Sản phẩm & chất liệu"
+        title="Danh mục sản phẩm & thông số kỹ thuật vải"
+        size="num"
+        class="lg:col-span-5"
+        reveal={false}
+      />
+      <ul class="lg:col-span-6 lg:col-start-7 list-none m-0 p-0 border-t border-border-subtle">
+        {
+          solution.products.map((product) => (
+            <li class="py-4 border-b border-border-subtle text-base md:text-lg font-semibold text-ink-dark">
+              {product}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Bảng vải — divider mảnh, header uppercase -->
+    <div class="overflow-x-auto" data-reveal>
+      <table class="w-full border-collapse text-left min-w-[640px]">
+        <thead>
+          <tr class="border-b-2 border-ink-dark">
+            <th class="py-4 pr-6 text-[10px] uppercase tracking-[0.2em] text-text-muted font-bold">Chất liệu</th>
+            <th class="py-4 pr-6 text-[10px] uppercase tracking-[0.2em] text-text-muted font-bold">Thành phần</th>
+            <th class="py-4 pr-6 text-[10px] uppercase tracking-[0.2em] text-text-muted font-bold">Đặc tính nổi bật</th>
+            <th class="py-4 text-[10px] uppercase tracking-[0.2em] text-text-muted font-bold">Môi trường phù hợp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            solution.fabrics.map((fabric) => (
+              <tr class="border-b border-border-subtle transition-colors duration-300 hover:bg-paper">
+                <td class="py-5 pr-6 font-bold text-ink-dark text-[15px] md:text-base">{fabric.name}</td>
+                <td class="py-5 pr-6 text-text-muted text-sm md:text-[15px]">{fabric.composition}</td>
+                <td class="py-5 pr-6 text-text-muted text-sm md:text-[15px]">{fabric.features}</td>
+                <td class="py-5 font-semibold text-brass-dark text-sm md:text-[15px]">{fabric.environment}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

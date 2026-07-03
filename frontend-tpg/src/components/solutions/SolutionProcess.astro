@@ -1,0 +1,36 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+import { processSteps } from '../../data/giai-phap';
+
+interface Props {
+  /** Số thứ tự section trên trang chi tiết (vd "04") — bỏ trống trên trang tổng */
+  sectionNumber?: string;
+}
+
+const { sectionNumber } = Astro.props;
+const eyebrow = sectionNumber ? `${sectionNumber} — Quy trình` : 'Quy trình';
+
+/** Quy trình làm việc 6 bước — stepper ngang, dùng chung mọi trang giải pháp */
+---
+
+<section class="bg-paper py-24 md:py-36">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8">
+    <SectionHeading eyebrow={eyebrow} title="Quy trình làm việc — giảm rủi ro cho doanh nghiệp" size="num" />
+
+    <ol class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 border-t border-border-subtle list-none m-0 p-0" data-reveal>
+      {
+        processSteps.map((step, index) => (
+          <li
+            class:list={[
+              'py-8 xl:py-10 pr-6 space-y-4',
+              index > 0 && 'xl:border-l xl:border-border-subtle xl:pl-6',
+            ]}
+          >
+            <span class="font-serif text-3xl md:text-4xl text-brass-dark block leading-none">{step.num}</span>
+            <h3 class="text-sm md:text-[15px] font-bold text-ink-dark leading-snug tracking-tight">{step.title}</h3>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

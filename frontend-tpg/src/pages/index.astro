@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeHero from '../components/home/HomeHero.astro';
+import HomeIntro from '../components/home/HomeIntro.astro';
+import HomeWhyChoose from '../components/home/HomeWhyChoose.astro';
+import HomeSolutions from '../components/home/HomeSolutions.astro';
+import HomeCapacity from '../components/home/HomeCapacity.astro';
+import HomePartners from '../components/home/HomePartners.astro';
+import HomeFeaturedCases from '../components/home/HomeFeaturedCases.astro';
+import HomeTestimonial from '../components/home/HomeTestimonial.astro';
+import HomeCertificates from '../components/home/HomeCertificates.astro';
+import HomeLeadForm from '../components/home/HomeLeadForm.astro';
+import HomeNewsSection from '../components/home/HomeNewsSection.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { seo } from '../data/site';
+---
+
+<BaseLayout title={seo.title} description={seo.description}>
+  <HomeHero />
+  <HomeIntro />
+  <HomeWhyChoose />
+  <HomeSolutions />
+  <HomeCapacity />
+  <HomePartners />
+  <HomeFeaturedCases />
+  <HomeTestimonial />
+  <HomeCertificates />
+  <HomeLeadForm />
+  <HomeNewsSection />
+  <CtaBanner variant="dark" id="lien-he" />
+</BaseLayout>
+

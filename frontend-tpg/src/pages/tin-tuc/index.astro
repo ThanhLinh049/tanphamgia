@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import TinTucFilter from '../../components/tin-tuc/TinTucFilter.astro';
+import TinTucList from '../../components/tin-tuc/TinTucList.astro';
+import { tinTucSeo, tinTucHeader, getAllPosts } from '../../data/tin-tuc';
+---
+
+<BaseLayout title={tinTucSeo.title} description={tinTucSeo.description}>
+  <PageHeader {...tinTucHeader} />
+
+  <section class="bg-paper py-24 md:py-32">
+    <div class="max-w-container-max-width mx-auto px-6 md:px-8">
+      <TinTucFilter />
+      <TinTucList posts={getAllPosts()} />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import SolutionsOverview from '../../components/solutions/SolutionsOverview.astro';
+import SolutionProcess from '../../components/solutions/SolutionProcess.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { giaiPhapSeo, giaiPhapIndexHeader } from '../../data/giai-phap';
+---
+
+<BaseLayout title={giaiPhapSeo.title} description={giaiPhapSeo.description}>
+  <PageHeader {...giaiPhapIndexHeader} descQuote />
+  <SolutionsOverview />
+  <SolutionProcess />
+  <CtaBanner />
+</BaseLayout>
+

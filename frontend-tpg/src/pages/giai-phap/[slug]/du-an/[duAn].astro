@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import CaseStudy from '../../../../components/solutions/CaseStudy.astro';
+import CtaBanner from '../../../../components/CtaBanner.astro';
+import { giaiPhapList } from '../../../../data/giai-phap';
+import type { DuAn, GiaiPhap } from '../../../../data/giai-phap';
+
+export function getStaticPaths() {
+  return giaiPhapList.flatMap((solution) =>
+    solution.projects.map((project) => ({
+      params: { slug: solution.slug, duAn: project.slug },
+      props: { solution, project },
+    })),
+  );
+}
+
+interface Props {
+  solution: GiaiPhap;
+  project: DuAn;
+}
+
+const { solution, project } = Astro.props;
+---
+
+<BaseLayout
+  title={`${project.name} | Dự án tiêu biểu — ${solution.name}`}
+  description={`Case study ${project.name}: ${project.stats}. ${solution.name} — Tân Phạm Gia.`}
+>
+  <CaseStudy project={project} solution={solution} />
+  <CtaBanner title="Cần giải pháp tương tự cho doanh nghiệp của bạn?" />
+</BaseLayout>
+

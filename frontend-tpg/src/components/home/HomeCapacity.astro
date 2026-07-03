@@ -1,0 +1,12 @@
+---
+import ZigzagBlock from '../ZigzagBlock.astro';
+import { homeCapacities } from '../../data/site';
+
+/** Năng lực sản xuất — zig-zag ảnh lớn, số liệu chồng lên ảnh */
+---
+
+<section class="bg-white py-24 md:py-36" id="nang-luc">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8 space-y-20 md:space-y-32">
+    {homeCapacities.map((block, index) => <ZigzagBlock {...block} flip={index % 2 === 1} />)}
+  </div>
+</section>

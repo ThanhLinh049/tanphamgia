@@ -1,0 +1,27 @@
+---
+import { brandStory } from '../../data/gioi-thieu';
+
+/** 2.2 Câu chuyện thương hiệu — ảnh và chữ song song 2 cột */
+---
+
+<section class="bg-white py-24 md:py-36">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <figure class="lg:col-span-6 m-0 overflow-hidden" data-reveal>
+      <img
+        alt="Câu chuyện thương hiệu Tân Phạm Gia"
+        class="w-full aspect-[4/3] lg:aspect-[4/4.4] object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03]"
+        src={brandStory.image}
+        loading="lazy"
+      />
+    </figure>
+    <div class="lg:col-span-6 space-y-7" data-reveal>
+      <p class="text-[11px] font-bold uppercase tracking-[0.3em] text-brass-dark">Câu chuyện thương hiệu</p>
+      <h2 class="font-display-lg text-2xl md:text-[2.5rem] md:leading-[1.18] font-bold text-ink-dark tracking-tight">
+        {brandStory.title}
+      </h2>
+      <div class="space-y-5 text-text-muted text-[16px] md:text-[17px] leading-[1.85]">
+        {brandStory.paragraphs.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+import { giaiPhapList } from '../../data/giai-phap';
+
+interface Props {
+  /** Slug giải pháp hiện tại — loại khỏi danh sách liên quan */
+  currentSlug: string;
+}
+
+const { currentSlug } = Astro.props;
+const related = giaiPhapList.filter((item) => item.slug !== currentSlug);
+
+/** Giải pháp liên quan — mục lục hàng gọn */
+---
+
+<section class="bg-white py-24 md:py-32">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8">
+    <SectionHeading
+      eyebrow="Khám phá thêm"
+      title="Giải pháp khác của Tân Phạm Gia"
+      size="md"
+      class="max-w-3xl mb-12 md:mb-16"
+    />
+    <div class="border-t border-border-subtle" data-reveal>
+      {
+        related.map((item) => (
+          <a
+            href={`/giai-phap/${item.slug}`}
+            class="group grid grid-cols-12 items-center gap-4 md:gap-8 py-6 md:py-8 border-b border-border-subtle no-underline"
+          >
+            <span class="col-span-2 md:col-span-1 font-serif text-lg md:text-xl text-text-muted/70">{item.number}</span>
+            <h3 class="col-span-10 md:col-span-8 text-lg md:text-2xl font-bold text-ink-dark tracking-tight">
+              <span class="solution-index-title">{item.title}</span>
+            </h3>
+            <span class="hidden md:flex md:col-span-3 justify-end text-xl text-ink-dark transition-all duration-300 group-hover:text-brass-dark group-hover:translate-x-1.5">
+              →
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

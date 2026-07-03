@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import SolutionProblems from '../../components/solutions/SolutionProblems.astro';
+import SolutionPlans from '../../components/solutions/SolutionPlans.astro';
+import SolutionProducts from '../../components/solutions/SolutionProducts.astro';
+import SolutionProcess from '../../components/solutions/SolutionProcess.astro';
+import SolutionCases from '../../components/solutions/SolutionCases.astro';
+import SolutionRelated from '../../components/solutions/SolutionRelated.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { giaiPhapList } from '../../data/giai-phap';
+import type { GiaiPhap } from '../../data/giai-phap';
+
+export function getStaticPaths() {
+  return giaiPhapList.map((solution) => ({
+    params: { slug: solution.slug },
+    props: { solution },
+  }));
+}
+
+interface Props {
+  solution: GiaiPhap;
+}
+
+const { solution } = Astro.props;
+---
+
+<BaseLayout title={solution.seoTitle} description={solution.seoDescription}>
+  <PageHeader
+    eyebrow={`Giải pháp ${solution.number}`}
+    eyebrowSerif
+    title={solution.title}
+    desc={solution.desc}
+    image={solution.image}
+    audiences={solution.audiences}
+  />
+  <SolutionProblems solution={solution} />
+  <SolutionPlans solution={solution} />
+  <SolutionProducts solution={solution} />
+  <SolutionProcess sectionNumber="04" />
+  <SolutionCases solution={solution} />
+  <SolutionRelated currentSlug={solution.slug} />
+  <CtaBanner />
+</BaseLayout>
+

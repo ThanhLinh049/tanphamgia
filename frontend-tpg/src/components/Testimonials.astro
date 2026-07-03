@@ -1,0 +1,31 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { testimonials } from '../data/gioi-thieu';
+
+/** Phản hồi khách hàng — 3 quote serif nền tối, dùng chung (Giới thiệu 2.8 + Khách hàng 4.7) */
+---
+
+<section class="bg-ink-dark text-white py-24 md:py-36">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8">
+    <SectionHeading eyebrow="Phản hồi khách hàng" title="Khách hàng nói gì về chúng tôi" tone="dark" />
+    <div class="grid md:grid-cols-3 gap-0 border-t border-white/10 pt-2 md:pt-16" data-reveal>
+      {
+        testimonials.map((t, i) => (
+          <blockquote
+            class:list={[
+              'm-0 space-y-6 py-10 border-b border-white/10 last:border-b-0 md:py-0 md:border-b-0',
+              i > 0 && 'md:border-l md:border-white/10 md:pl-12',
+              i < 2 && 'md:pr-12',
+            ]}
+          >
+            <p class="font-serif italic text-white/85 leading-[1.7] text-base md:text-lg">"{t.quote}"</p>
+            <footer>
+              <cite class="not-italic font-bold text-white text-sm block">{t.name}</cite>
+              <span class="text-[11px] uppercase tracking-[0.16em] text-white/45 font-semibold mt-1.5 block">{t.role}</span>
+            </footer>
+          </blockquote>
+        ))
+      }
+    </div>
+  </div>
+</section>

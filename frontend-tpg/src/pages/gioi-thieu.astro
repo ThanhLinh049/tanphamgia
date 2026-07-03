@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AboutStory from '../components/about/AboutStory.astro';
+import AboutTimeline from '../components/about/AboutTimeline.astro';
+import AboutPositioning from '../components/about/AboutPositioning.astro';
+import AboutCapacity from '../components/about/AboutCapacity.astro';
+import AboutTeam from '../components/about/AboutTeam.astro';
+import AboutCertificates from '../components/about/AboutCertificates.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { gioiThieuSeo, gioiThieuHeader } from '../data/gioi-thieu';
+---
+
+<BaseLayout title={gioiThieuSeo.title} description={gioiThieuSeo.description}>
+  <PageHeader {...gioiThieuHeader} />
+  <AboutStory />
+  <AboutTimeline />
+  <AboutPositioning />
+  <AboutCapacity />
+  <AboutTeam />
+  <AboutCertificates />
+  <Testimonials />
+  <CtaBanner />
+</BaseLayout>
+

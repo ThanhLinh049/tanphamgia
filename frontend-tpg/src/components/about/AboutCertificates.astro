@@ -1,0 +1,29 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+import { certificateImages } from '../../data/gioi-thieu';
+
+/** 2.7 Giấy khen & chứng nhận — gallery phẳng */
+---
+
+<section class="bg-paper py-24 md:py-36" id="chung-nhan">
+  <div class="max-w-container-max-width mx-auto px-6 md:px-8">
+    <SectionHeading eyebrow="Uy tín & chứng nhận" title="Giấy khen & chứng nhận" />
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8" data-reveal>
+      {
+        certificateImages.map((cert) => (
+          <figure class="m-0 group">
+            <span class="block overflow-hidden">
+              <img
+                alt={cert.title}
+                class="w-full aspect-[4/3] object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                loading="lazy"
+                src={cert.image}
+              />
+            </span>
+            <figcaption class="mt-4 text-sm font-semibold text-ink-dark tracking-wide">{cert.title}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

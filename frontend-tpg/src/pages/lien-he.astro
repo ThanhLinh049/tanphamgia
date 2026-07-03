@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import LienHeContact from '../components/lien-he/LienHeContact.astro';
+import { lienHeSeo, lienHeHeader } from '../data/lien-he';
+---
+
+<BaseLayout title={lienHeSeo.title} description={lienHeSeo.description}>
+  <PageHeader {...lienHeHeader} />
+  <LienHeContact />
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+import { getCategories } from '../../data/tin-tuc';
+
+interface Props {
+  /** Slug chuyên mục đang xem — bỏ trống khi ở trang "Tất cả" */
+  activeSlug?: string;
+}
+
+const { activeSlug } = Astro.props;
+const categories = getCategories();
+
+const baseClass =
+  'inline-block pb-3 text-[11px] font-bold uppercase tracking-[0.18em] no-underline border-b-2 transition-colors duration-300';
+const activeClass = 'text-ink-dark border-brass';
+const inactiveClass = 'text-text-muted border-transparent hover:text-ink-dark';
+
+/** Bộ lọc chuyên mục — link tĩnh, mỗi chuyên mục một URL riêng */
+---
+
+<nav
+  aria-label="Lọc theo chuyên mục"
+  class="flex flex-wrap gap-x-8 gap-y-2 border-b border-border-subtle mb-12 md:mb-16"
+  data-reveal
+>
+  <a href="/tin-tuc" class:list={[baseClass, activeSlug ? inactiveClass : activeClass]}>
+    Tất cả
+  </a>
+  {
+    categories.map((category) => (
+      <a
+        href={`/tin-tuc/chuyen-muc/${category.slug}`}
+        class:list={[baseClass, category.slug === activeSlug ? activeClass : inactiveClass]}
+      >
+        {category.name}
+      </a>
+    ))
+  }
+</nav>
