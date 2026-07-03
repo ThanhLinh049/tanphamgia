@@ -12,4 +12,6 @@ Thumbs.db
 
 # IDE configuration and agents config
 .claude/
+.vercel/
+**/.vercel/
 
