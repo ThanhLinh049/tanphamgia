@@ -9,3 +9,7 @@ Thumbs.db
 
 # WordPress — không đẩy credential lên GitHub
 **/wp-config.php
+
+# IDE configuration and agents config
+.claude/
+
