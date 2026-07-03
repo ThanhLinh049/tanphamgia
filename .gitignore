@@ -1,6 +1,8 @@
 node_modules/
 dist/
 .astro/
+.vercel/
+.claude/
 .env
 .env.*
 !.env.example
@@ -9,9 +11,3 @@ Thumbs.db
 
 # WordPress — không đẩy credential lên GitHub
 **/wp-config.php
-
-# IDE configuration and agents config
-.claude/
-.vercel/
-**/.vercel/
-
